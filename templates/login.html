@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col text-center login_header">
+            <p>Login</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-10 col-md-4 text-center">
+            <form action="{{ url_for('login') }}" method="POST">
+                <div class="row my-3 justify-content-center">
+                    <div class="col-8 col-md-12">
+                        <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+                    </div>
+                </div>
+                <div class="row my-3 justify-content-center">
+                    <div class="col-8 col-md-12">
+                        <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-12 col-md-6 mb-3">
+                        <button type="submit" class="btn btn-primary login_button">Log in</button>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <a href="{{ url_for('register') }}"><button type="button" class="btn btn-primary regis_button">Register</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

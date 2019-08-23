@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+
+    {% if session["id"] %}
+        <div class="row">
+            <div class="col text-center mt-3 mb-5 display-4">
+                <p>Search books</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <!-- search form -->
+                <form action="{{ url_for('search') }}" method="GET">
+                    <div class="row justify-content-center">
+                        <div class="col-sm-10 col-md mb-2">
+                            <input type="text" class="form-control" name="isbn" placeholder="ISBN">
+                        </div>
+                        <div class="col-sm-10 col-md mb-2">
+                            <input type="text" class="form-control" name="title" placeholder="Title">
+                        </div>
+                        <div class="col-sm-10 col-md mb-2">
+                            <input type="text" class="form-control" name="author" placeholder="Author">
+                        </div>
+                        <div class="col-sm-10 col-md mb-2">
+                            <input type="number" class="form-control" name="year" placeholder="Year">
+                        </div>
+                    </div>
+                    <!-- button -->
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary my-5 search_button">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col text-center idx_title">
+                <p>Search and review your favorite book</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <a href="{{ url_for('login') }}"><button type="button" class="btn btn-primary idx_login">Login</button></a>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

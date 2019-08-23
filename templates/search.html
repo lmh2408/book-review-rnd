@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Result{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col text-center mt-3 mb-5 display-4">
+            <p>Search Results</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <!-- search form -->
+            <form action="{{ url_for('search') }}" method="GET">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-md mb-2">
+                        <input type="text" class="form-control" name="isbn" placeholder="ISBN" value="{{ def_isbn }}">
+                    </div>
+                    <div class="col-10 col-md mb-2">
+                        <input type="text" class="form-control" name="title" placeholder="Title" value="{{ def_title }}">
+                    </div>
+                    <div class="col-10 col-md mb-2">
+                        <input type="text" class="form-control" name="author" placeholder="Author" value="{{ def_author }}">
+                    </div>
+                    <div class="col-10 col-md mb-2">
+                        <input type="number" class="form-control" name="year" placeholder="Year" value="{{ def_year }}">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-5">
+                    <div class="col text-right pr-0">
+                        <h5>Show:</h5>
+                    </div>
+                    <div class="col-4 col-md-2">
+                        <input type="number" class="form-control" name="display_count" placeholder="" value="{{ display_count }}">
+                    </div>
+                    <div class="col text-left pl-0">
+                        <h5>results</h5>
+                    </div>
+                </div>
+
+                <!-- button -->
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary my-5 search_button">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if result_count == 0 %}
+        <div class="row justify-content-center mb-4">
+            <div class="col-10 col-md-4 rounded bg-warning text-center text-danger">
+                <p class="m-3 h4">Result not found</p>
+            </div>
+        </div>
+    {% else %}
+        {% for row in result %}
+            <div class="row justify-content-center mb-4">
+                <div class="col-10 border bg-light shadow rounded">
+                    <a href="{{ url_for('book', isbn=row['isbn']) }}" class="none">
+                        <div class="row">
+                            <div class="col">
+                                <p class="h5 m-3 text-center text-md-left"><b>{{ row["title"] }}</b></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <p class="h6 mb-3 m-md-3 text-center text-md-left"><b>ISBN:</b> {{ row["isbn"] }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <p class="h6 mb-3 m-md-3 text-center text-md-left"><b>Author:</b> {{ row["author"] }}</p>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <p class="h6 mb-3 m-md-3 text-center text-md-left"><b>Year:</b> {{ row["year"] }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

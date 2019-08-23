@@ -1,0 +1,66 @@
+/* layout.html */
+.navbar-brand {
+  font-weight: bold; }
+
+.container {
+  margin-top: 4rem; }
+
+/* index.html */
+.idx_title {
+  font-size: 3rem; }
+
+.idx_login {
+  width: 10rem;
+  height: 4rem;
+  background: green;
+  border-color: green;
+  margin: 3rem;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.idx_login:hover {
+  background: green;
+  border-color: green; }
+
+.search_header {
+  font-size: 2.5rem; }
+
+.search_button {
+  width: 13rem;
+  height: 2.8rem;
+  background: green;
+  border-color: green;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.search_button:hover {
+  background: green;
+  border-color: green; }
+
+/* login.html */
+.login_header {
+  font-size: 2.5rem; }
+
+.login_button, .regis_button {
+  width: 8rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.login_button {
+  background: green;
+  border-color: green; }
+
+.login_button:hover {
+  background: green;
+  border-color: green; }
+
+.regis_button {
+  background: purple;
+  border-color: purple; }
+
+.regis_button:hover {
+  background: purple;
+  border-color: purple; }
+
+.none {
+  color: black; }
+
+/*# sourceMappingURL=styles.css.map */

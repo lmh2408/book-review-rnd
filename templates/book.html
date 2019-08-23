@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}Book{% endblock %}
+
+{% block body %}
+    <!-- {{ book["title"] }}
+    {{ rating["average_rating"] }} -->
+    <div class="row">
+        <div class="col text-center">
+            <p class="display-4">{{ book["title"] }}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-10 col-md-4 mb-2 border rounded p-3 bg-light">
+            <div class="row mb-2">
+                <div class="col">
+                    <h3>Book Info</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>ISBN: {{ book["isbn"] }}</p>
+                    <p>Author: {{ book["author"] }}</p>
+                    <p>Year: {{ book["year"] }}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-10 col-md-4 mb-2 ml-md-5 border rounded p-3 bg-light">
+            <div class="row mb-2">
+                <div class="col">
+                    <h3>Rating Data</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Average rating: {{ rating["average_rating"] }}</p>
+                    <p>Ratings count: {{ rating["work_ratings_count"] }}</p>
+                    <p>Reviews count: {{ rating["work_reviews_count"] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col text-center">
+            <h4>Write your review</h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-10 col-md-6">
+            <form action="{{ url_for('send_review', isbn= book['isbn']) }}" method="POST">
+                <div class="row mb-2">
+                    <div class="col">
+                        <input type="text" class="form-control" name="review_head" placeholder="Review head">
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col">
+                        <textarea class="form-control" name="review_body" cols="30" rows="5" placeholder="Review body" required></textarea>
+                    </div>
+                </div>
+                <div class="row my-3 justify-content-center">
+                    <div class="col-2 pr-1">
+                        <p class="mt-1 text-right">Rating:</p>
+                    </div>
+                    <div class="col-3 col-md-2 px-1">
+                        <input type="number" class="form-control" name="review_rating" step="0.01" value="3" required>
+                    </div>
+                    <div class="col-3 pl-0">
+                        <p class="mt-1">out of 5</p>
+                    </div>
+                </div>
+                <div class="row my-3 justify-content-center">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block shadow">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col text-center">
+            <h3>Reviews</h3>
+        </div>
+    </div>
+
+    {% if not display_review %}
+        <div class="row justify-content-center mb-3">
+            <div class="col-11 col-md-10 rounded p-3 bg-secondary text-white text-center">
+                <h5>No review yet</h5>
+            </div>
+        </div>
+    {% else %}
+        {% for row in reviews %}
+            <div class="row justify-content-center mb-3">
+                <div class="col-11 col-md-10 border rounded p-3 bg-light">
+                    <div class="row">
+                        <div class="col">
+                            <h5><b>{{ row["reviewer"] }}</b>: {{ row["review_head"] }}</h5>
+                            <p>Rating: {{ row["rating"] }}/5</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>{{ row["review_body"] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

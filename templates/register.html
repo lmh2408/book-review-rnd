@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col text-center my-3">
+            <p class="h2">Register</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <form action="{{ url_for('register') }}" method="POST">
+                <div class="row m-3">
+                    <div class="col">
+                        <input type="text" class="form-control" name="username" placeholder="Enter username">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col">
+                        <input type="password" class="form-control" name="password" placeholder="Enter password">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col">
+                        <input type="password" class="form-control" name="confirm" placeholder="Confirm password">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary regis_button">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
