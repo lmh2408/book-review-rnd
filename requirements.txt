@@ -19,7 +19,7 @@ DateTime==4.3
 Django==2.2
 django-filter==2.1.0
 django-widget-tweaks==1.4.3
-djangorestframework==3.9.3
+djangorestframework==3.11.2
 Flask==1.0.2
 Flask-Session==0.3.1
 Flask-SocketIO==3.3.2
